@@ -1,0 +1,91 @@
+WindowManager:
+    MainWindow:
+    SecondWindow:
+    ThirdWindow:
+    FourthWindow:
+    FifthWindow:
+
+<MainWindow>:
+    name: "main"
+
+    GridLayout:
+        cols: 1
+        BoxLayout:
+            padding: 5
+            size_hint: (0.6,0.7)
+            pos_hint: {"center_x":0.5,"center_y":0.5}
+
+            Image:
+                source: "Logo.png"
+                size_hint_x: 0.4
+                allow_stretch: True
+
+        GridLayout:
+            cols: 1
+            size_hint: (0.6,0.7)
+            pos_hint: {"center_x":0.5,"center_y":0.5}
+
+            Label:
+                text: "Choose option"
+
+            Button:
+                text: "Input text"
+                on_release:
+                    app.root.current = "text_win"
+
+            Button:
+                text: "Upload image"
+                on_release:
+                    app.root.current = "pict_win"
+
+            Button:
+                text: "Upload audio"
+                on_release:
+                    app.root.current = "audio_win"
+
+<SecondWindow>:
+    name: "text_win"
+
+    GridLayout:
+        cols: 1
+        Label:
+            text: "Input given text: "
+        TextInput:
+            id: text_win_input
+            multiline: False
+        Button:
+            text: "Check spelling"
+            on_release:
+                app.root.current = "correct_win"
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "main"
+
+<ThirdWindow>:
+    name: "pict_win"
+
+    Button:
+        text: "Go Back"
+        on_release:
+            app.root.current = "main"
+
+<FourthWindow>:
+    name: "audio_win"
+
+    Button:
+        text: "Go Back"
+        on_release:
+            app.root.current = "main"
+
+<FifthWindow>:
+    name: "correct_win"
+
+    GridLayout:
+        cols: 1
+        Label:
+            text: "The spelling is correct"
+        Button:
+            text: "Go Back"
+            on_release:
+                app.root.current = "main"
